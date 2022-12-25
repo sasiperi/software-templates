@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: ${{values.component_id}}
+
+  datasource:
+      username: sa
+      password:
+      url: jdbc:h2:mem:${{values.db_name}}
+      #url: jdbc:h2:file:/data/demo
+      driver-class-name: org.h2.Driver
+      test-while-idle: true
+      validation-query: SEELCT 1
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    show-sql: true
+
+customer:
+  getbyssn.endpoint: http://localhost:{TEST_LOCAL_PORT}/v1/customer/ssn/{ssn}
